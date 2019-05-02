@@ -11,12 +11,13 @@ import static org.junit.Assert.assertNotNull;
 // JUnit 5 import
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 
@@ -54,12 +55,15 @@ class StringTest {
 		// Checks in place = 4*4=16 => Assertions: language that used to check
 	}
 
-	@Test // This is how to test exception
+	// This is how to test exception
+	@Test
+	@DisplayName("When length is null, throw an exception") // @DisplayName gives a name to a test
 	void length_exception() {
 		String str = null;
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		assertThrows(NullPointerException.class, () -> {
 			str.length();
-		});// 1st param: exception type, 2nd param: code what you want to execute
+		});
+		// 1st parameter: exception type, 2nd parameter: code what you want to execute
 	}
 
 	@Test
@@ -90,7 +94,7 @@ class StringTest {
 	void split_basic() {
 		String str = "abc def ghi";
 		String actualResult[] = str.split(" ");
-		// can put it as param instead of using expectedResult
+		// can put it as parameter instead of using expectedResult
 		// String[] expectedResult = new String[] { "abc", "def", "ghi" };
 
 		assertArrayEquals(new String[] { "abc", "def", "ghi" }, actualResult);
