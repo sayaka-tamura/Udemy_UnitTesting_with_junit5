@@ -6,11 +6,10 @@
  */
 package com.in28minutes.junit5;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertNotNull;
-// JUnit 5 import
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterAll;
@@ -55,9 +54,10 @@ class StringTest {
 		// Checks in place = 4*4=16 => Assertions: language that used to check
 	}
 
-	// This is how to test exception
+	// This is how to test exception(Not working, may be does not have dependencies)
 	@Test
-	@DisplayName("When length is null, throw an exception") // @DisplayName gives a name to a test
+	// @DisplayName gives a name to a test
+	@DisplayName("When length is null, throw an exception")
 	void length_exception() {
 		String str = null;
 		assertThrows(NullPointerException.class, () -> {
