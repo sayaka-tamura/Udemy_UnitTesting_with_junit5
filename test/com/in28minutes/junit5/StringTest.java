@@ -11,7 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -96,6 +99,16 @@ class StringTest {
 			str.length();
 		});
 		// 1st parameter: exception type, 2nd parameter: code what you want to execute
+	}
+
+	@Test
+	void performanceTest() {
+		assertTimeout(Duration.ofSeconds(5), () -> {
+			for (int i = 0; i < 100000; i++) {
+				int j = i;
+				System.out.println(j);
+			}
+		});
 	}
 
 	@Test
