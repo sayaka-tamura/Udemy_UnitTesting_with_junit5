@@ -21,6 +21,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringTest {
@@ -57,7 +58,6 @@ class StringTest {
 		// Checks in place = 4*4=16 => Assertions: language that used to check
 	}
 
-	// Not working somehow
 	@Test
 	void length_greater_than_zero() {
 		assertTrue("ABCD".length() > 0);
@@ -66,7 +66,6 @@ class StringTest {
 		assertTrue("DEF".length() > 0);
 	}
 
-	// Not working somehow
 	/** Parameterized Test */
 	@ParameterizedTest
 	@ValueSource(strings = { "ABCD", "ABC", "A", "DEF" })
@@ -74,7 +73,19 @@ class StringTest {
 		assertTrue(str.length() > 0);
 	}
 
-	// This is how to test exception(Not working, may be does not have dependencies)
+	@ParameterizedTest
+	@CsvSource(value = { "abcd,ABCD", "abc,ABC", "'',''", "abcdefg,ABCDEFG" })
+	void uppercase(String word, String capitalizeWord) {
+		assertEquals(capitalizeWord, word.toUpperCase());
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = { "abcd,4", "abc,3", "'',0", "abcdefg,7" })
+	void length(String word, int expectedLength) {
+		assertEquals(expectedLength, word.length());
+	}
+
+	// This is how to test exception
 	@Test
 	// @DisplayName gives a name to a test
 	@DisplayName("When length is null, throw an exception")
