@@ -18,6 +18,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -112,6 +113,7 @@ class StringTest {
 	}
 
 	@Test
+	@RepeatedTest(10) // Repeat tests as much as you want
 	void contains_basic() {
 		// String str = "abcdefgh";
 		// String result = str.contains(str);
