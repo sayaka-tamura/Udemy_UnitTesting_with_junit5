@@ -20,6 +20,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -51,6 +52,7 @@ class StringTest {
 	}
 
 	@Test // Annotation for implementing Junit Jupiter Test class
+	@Disabled // @Ignored : in JUnit4
 	void length_basic() {
 		int actualLength = "ABCD".length();
 		int expectLength = 4;
